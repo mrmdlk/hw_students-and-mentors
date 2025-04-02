@@ -30,6 +30,12 @@ class Student:
             all_grades += grades
         return round(sum(all_grades)/len(all_grades), 1) if len(all_grades) > 0 else 0
 
+    def __eq__(self, other):
+        return self._average_grade() == other._average_grade()
+
+    def __gt__(self, other):
+        return self._average_grade() > other._average_grade()
+    
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
@@ -49,6 +55,12 @@ class Lecturer(Mentor):
         for grades in self.grades.values():
             all_grades += grades
         return round(sum(all_grades)/len(all_grades), 1) if len(all_grades) > 0 else 0
+
+    def __eq__(self, other):
+        return self._average_grade() == other._average_grade()
+
+    def __gt__(self, other):
+        return self._average_grade() > other._average_grade()
 
 class Reviewer(Mentor):
     def __init__(self, name, surname):
@@ -126,3 +138,5 @@ def average_grade_of_all_lecturers(lecturers, course):
 
 # print(average_grade_of_all_students([studen_Ivan, studen_Max], 'Python'))
 # print(average_grade_of_all_lecturers([lecturer_Matt, lecturer_Pit], 'Python'))
+# print(lecturer_Pit == lecturer_Matt)
+# print(studen_Ivan > studen_Max)
